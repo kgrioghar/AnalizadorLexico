@@ -32,7 +32,7 @@ public enum Tokens {
     No,
     Modulo,
     AbreParentesis,
-    CierraPArentesis,
+    CierraParentesis,
     AbreCorchetes,
     CierraCorchetes,
     AbreLlaves,
@@ -57,6 +57,7 @@ public enum Tokens {
     AsignacionDerecha,
     AccesoElementoVector,
     Gato,
+    Operador,
     Identificador,
     Numero,
     ERROR
