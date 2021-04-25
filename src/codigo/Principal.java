@@ -21,7 +21,8 @@ import javax.swing.JFileChooser;
  */
 public class Principal {
     public static void main(String[] args) {
-        String ruta = "C:/Users/Kevin/Documents/NetBeansProjects/AnalizadorLexico/src/codigo/Lexer.flex";
+        String ruta = "C:/Users/Kevin/Documents/GitHub/AnalizadorLexico/src/codigo/Lexer.flex";
+        generarLexer(ruta);
         
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
