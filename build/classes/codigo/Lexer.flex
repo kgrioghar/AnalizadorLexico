@@ -3,7 +3,6 @@ import static codigo.Tokens.*;
 %%
 %class Lexer
 %type Tokens
-%x str
 L=[a-zA-Z_]+
 D=[0-9]+
 O=[0-7]+
@@ -52,8 +51,6 @@ while {lexeme=yytext(); return Reservadas;}
 "-" |
 "*" |
 "/" |
-"," |
-";" |
 "++" |
 "--" |
 "==" |
@@ -67,13 +64,6 @@ while {lexeme=yytext(); return Reservadas;}
 "&&" |
 "!" |
 "%" |
-"(" |
-")" |
-"[" |
-"]" |
-"{" |
-"}" |
-":" |
 "." |
 "+=" |
 "-=" |
@@ -93,9 +83,17 @@ while {lexeme=yytext(); return Reservadas;}
 ">>=" |
 "->" |
 "#" {lexeme=yytext(); return Operador;}
+"(" |
+")" |
+"[" |
+"]" |
+"{" |
+"}" |
+"," |
+";" |
+"..." |
+":" {lexeme=yytext(); return Delimitador;}
 {L}({L}|{D})* {lexeme=yytext(); return Identificador;}
-{D}+ |
-{D}+"."{D}* |
-"-"{D}+ |
-"-"{D}+"."{D}* {lexeme=yytext(); return Literal;}
+{D}+ | {D}+"."{D}* | "-"{D}+ | "-"{D}+"."{D}* {lexeme=yytext(); return Literal;}
+\"/{L}({L}|{D})*\"$ {lexeme=yytext(); return Literal;}
  . {return ERROR;}
