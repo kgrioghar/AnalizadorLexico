@@ -10,6 +10,7 @@ package codigo;
  * @author Kevin
  */
 public enum Tokens {
+    Linea,
     Reservadas,
     Operador,
     Delimitador,

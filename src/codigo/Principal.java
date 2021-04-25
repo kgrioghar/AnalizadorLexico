@@ -27,10 +27,12 @@ public class Principal {
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         
+        int cont = 1;
+        
         try {
             Reader lector = new BufferedReader(new FileReader(chooser.getSelectedFile()));
             Lexer lexer = new Lexer(lector);
-            String resultado = "";
+            String resultado = "Linea " + cont + "\t\tSimbolo\n";
             while (true) {
                 Tokens tokens = lexer.yylex();
                 if (tokens == null) {
@@ -42,11 +44,15 @@ public class Principal {
                     case ERROR:
                         resultado += "Simbolo no definido\n";
                         break;
+                    case Linea:
+                        cont++;
+                        resultado += "Linea " + cont + "\n";
+                        break;
                     case Identificador: case Literal: case Reservadas: case Operador: case Delimitador:
-                        resultado += lexer.lexeme + " " + tokens + "\n";
+                        resultado += "  " + tokens + "\t" + lexer.lexeme + "\n";
                         break;
                     default:
-                        resultado += tokens + "\n";
+                        resultado += "  " + tokens + "\n";
                         break;
                 }
             }
