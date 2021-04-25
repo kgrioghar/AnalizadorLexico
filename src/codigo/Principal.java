@@ -42,7 +42,7 @@ public class Principal {
                     case ERROR:
                         resultado += "Simbolo no definido\n";
                         break;
-                    case Identificador: case Numero: case Reservadas: case Operador:
+                    case Identificador: case Literal: case Reservadas: case Operador:
                         resultado += lexer.lexeme + " " + tokens + "\n";
                         break;
                     default:
