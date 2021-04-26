@@ -97,4 +97,5 @@ while {lexeme=yytext(); return Reservadas;}
 {L}({L}|{D})* {lexeme=yytext(); return Identificador;}
 \".*\" | \'.\' {lexeme=yytext(); return Literal;}
 {D}+ | {D}+"."{D}* | "-"{D}+ | "-"{D}+"."{D}* {lexeme=yytext(); return Literal;}
+0[xX]{H}+ | 0[xX]{H}+"."{H}* {lexeme=yytext(); return Literal;}
  . {return ERROR;}
